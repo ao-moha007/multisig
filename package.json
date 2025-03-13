@@ -1,0 +1,14 @@
+{
+  "name": "hardhat-project",
+  "dependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@openzeppelin/contracts": "^4.9.5",
+    "dotenv": "^16.4.7",
+    "solc": "^0.8.18"
+  },
+  "devDependencies": {
+    "@tenderly/hardhat-tenderly": "^2.5.2",
+    "hardhat-deploy": "^0.14.1",
+    "hardhat-gas-reporter": "^1.0.9"
+  }
+}

@@ -1,0 +1,34 @@
+const { expect } = require("chai");
+const { ethers } = require("hardhat");
+
+describe("MultiSigWallet", function () {
+    let MultiSigWallet, wallet;
+    let owner1, owner2, owner3, nonOwner, otherSigner;
+    let owners;
+    const requiredSignatures = 2;
+
+    beforeEach(async function () {
+        // Get test accounts
+        [owner1, owner2, owner3, nonOwner, otherSigner] = await ethers.getSigners();
+        owners = [owner1.address, owner2.address, owner3.address];
+
+        // Ensure correct contract factory
+        MultiSigWallet = await ethers.getContractFactory("MultiSigWallet");
+
+        // Deploy with correct arguments
+        wallet = await MultiSigWallet.deploy(owners, requiredSignatures);
+
+        await wallet.waitForDeployment(); // Ensure deployment completes
+
+        // Fund the contract for transactions
+        await owner1.sendTransaction({
+            to: await wallet.getAddress(),
+            value: ethers.parseEther("10.0"), // Fund with 10 ETH
+        });
+    });
+
+    it("should set the correct owners", async function () {
+        const contractOwners = await wallet.getOwners();
+        expect(contractOwners).to.deep.equal(owners);
+    });
+});
