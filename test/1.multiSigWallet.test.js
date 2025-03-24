@@ -156,4 +156,3 @@ describe("MultiSigWallet", function () {
         });
     });
 });
-//module.exports.tags = ["MultiSigWallet"];

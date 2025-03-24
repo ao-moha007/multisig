@@ -1,13 +1,19 @@
-# Sample Hardhat Project
+# MultiSig Wallet
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+# Overview
 
-Try running some of the following tasks:
+The MultiSig Wallet is a secure Ethereum smart contract that requires multiple owners to approve transactions before execution. It enhances security by preventing unauthorized transactions and mitigating risks like key compromise.
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
-```
+# Features
+
+Multi-Signature Security: Requires a predefined number of owner approvals before executing a transaction.
+
+Ether Deposits: Accepts and stores ETH securely.
+
+Transaction Proposal & Approval: Owners can propose transactions, and other owners must approve them.
+
+Non-Reentrant Execution: Uses OpenZeppelin’s ReentrancyGuard to prevent reentrancy attacks.
+
+Owner Management: Provides visibility into wallet owners and transaction details.
+
+This contract is ideal for DAOs, business treasuries, and joint fund management, ensuring transactions are executed with collective agreement.
